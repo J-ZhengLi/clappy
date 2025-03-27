@@ -1,0 +1,29 @@
+{
+    "response": {
+        "perfect": [
+            "Amazing!",
+            "Bravo... bravo!",
+            "Excellent!",
+            "How do you write such amazing code?",
+            "Not bad, not bad!",
+            "OMG, no warnings? How!?",
+            "That's some nice code you got there~",
+            "UwU, すごいですね！ 頑張って！ ",
+            "What!? Not a single warning? Impossible!"
+        ],
+        "mediocre": [
+            "Ah, you got some warnings in there.",
+            "Only a few warnings this time, but don't get too ahead of yourself, alright?",
+            "If you ignore all the problems in your code, it has no problem at all, congratulations! (not really)",
+            "Just letting you know, you code is NOT perfect! But don't worry, we all do!",
+            "You got Warnings in your code!? Amateur!",
+            "Not the perfect code I was expecting, try harder next time!"
+        ],
+        "bad": [
+            "Pathetic!",
+            "Have you ever consider... using Python instead?",
+            "You call this code?! This looks like something my cousin wrote after 10 cups of boba! EVEN MY GRANDMA COULD WROTE BETTER CODE WHEN SHE WAS 9!",
+            "I'LL GIVE YOU TWO DOLLARS TO DELETE THAT CODE!"
+        ]
+    }
+}

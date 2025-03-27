@@ -4,4 +4,4 @@ A (un)official desktop companion for [clippy](https://github.com/rust-lang/rust-
 
 ## Motivation
 
-![motivation](./src/assets/motivation.png)
+![motivation](./public/motivation.png)
