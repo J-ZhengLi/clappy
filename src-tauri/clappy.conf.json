@@ -9,20 +9,18 @@
             "OMG, no warnings? How!?",
             "That's some nice code you got there~",
             "UwU, すごいですね！ 頑張って！ ",
-            "What!? Not a single warning? Impossible!"
+            "What!? Not a single warning? Impressive!"
         ],
         "mediocre": [
-            "Ah, you got some warnings in there.",
-            "Only a few warnings this time, but don't get too ahead of yourself, alright?",
-            "If you ignore all the problems in your code, it has no problem at all, congratulations! (not really)",
-            "Just letting you know, you code is NOT perfect! But don't worry, we all do!",
-            "You got Warnings in your code!? Amateur!",
+            "Well, at least it works...",
+            "You will not get a single clap from me until you fix your code!",
+            "Your code got a few warnings, please fix...",
             "Not the perfect code I was expecting, try harder next time!"
         ],
         "bad": [
             "Pathetic!",
-            "Have you ever consider... using Python instead?",
-            "You call this code?! This looks like something my cousin wrote after 10 cups of boba! EVEN MY GRANDMA COULD WROTE BETTER CODE WHEN SHE WAS 9!",
+            "You call this code?!",
+            "Hmmm... maybe you should try using Python instead.",
             "I'LL GIVE YOU TWO DOLLARS TO DELETE THAT CODE!"
         ]
     }

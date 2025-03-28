@@ -1,0 +1,39 @@
+{"frames": {
+
+"bubble_1.png":
+{
+	"frame": {"x":0,"y":0,"w":512,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":400},
+	"sourceSize": {"w":512,"h":400}
+},
+"bubble_2.png":
+{
+	"frame": {"x":512,"y":0,"w":512,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":400},
+	"sourceSize": {"w":512,"h":400}
+},
+"bubble_3.png":
+{
+	"frame": {"x":1024,"y":0,"w":512,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":400},
+	"sourceSize": {"w":512,"h":400}
+}},
+"animations": {
+	"bubble": ["bubble_1.png","bubble_2.png","bubble_3.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "bubble.png",
+	"format": "RGBA8888",
+	"size": {"w":1536,"h":400},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a29799755b8a5c43a0f57f2296be6b37:1d85a71bbd7fbf87b06d21fca2d3bdeb:5043a9c7e6a816c4b4127c3e19dde8d3$"
+}
+}
