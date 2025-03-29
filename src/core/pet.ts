@@ -1,5 +1,5 @@
-import { AnimatedSprite, Application, Assets, Container, Sprite, Texture, Text } from "pixi.js";
-import { invokeCommand } from "./utils";
+import { AnimatedSprite, Application, Assets, Container, Text } from "pixi.js";
+import { invokeCommand, resizeSpriteByWidth } from "./utils";
 import { Point2D } from "./types";
 
 enum DragStatus {
@@ -17,8 +17,10 @@ export class Pet {
     private isRunningClippy: boolean;
     private text?: Text;
     private dialogHideTimeout?: number;
+    private petName: string;
+    private petAnimations: any;
 
-    constructor() {
+    constructor(petName: string) {
         this.app = new Application();
         // this option was initially set to true during setup in Rust side
         this.isCursorEventsIgnored = true;
@@ -27,10 +29,16 @@ export class Pet {
         this.isRunningClippy = false;
         this.dragStatus = DragStatus.Exited;
         this.dragOffset = { x: 0.0, y: 0.0 };
+        this.petName = petName;
     }
 
     playAnimation(anim: string) {
-        console.log('playing: ', anim);
+        const pet = this.container?.getChildByLabel('pet') as AnimatedSprite;
+        if (pet && this.petAnimations) {
+            pet.stop();
+            pet.textures = this.petAnimations[anim];
+            pet.play();
+        }
     }
 
     showMessageDialog(msg: string) {
@@ -56,6 +64,8 @@ export class Pet {
             }
             this.dialogHideTimeout = setTimeout(() => {
                 dialogContainer.visible = false;
+                // reset pet animation
+                this.playAnimation('idle');
             }, 10000);
         }
     }
@@ -71,9 +81,8 @@ export class Pet {
     }
 
     async preload() {
-        // TODO: load multiple pet atlas from a json file
         const assets = [
-            { alias: 'ferris', src: 'companions/ferris.png' },
+            { alias: 'ferris', src: 'pets/ferris/ferris.json' },
             { alias: 'dialogBubble', src: 'dialog-bubble/bubble.json' },
         ]
 
@@ -82,7 +91,6 @@ export class Pet {
         // create a container for pet and its dialog bubble
         const container = new Container();
         container.pivot.set(0.5);
-        container.scale.set(0.4);
 
         this.setupPet(container);
         this.setupDialogBubble(container);
@@ -119,32 +127,43 @@ export class Pet {
         });
     }
 
-    setupPet(container: Container) {
-        let sprite = new Sprite(Texture.from('ferris'));
-        sprite.label = "pet";
-        sprite.anchor.set(0.5);
+    setupPet(container: Container, initialAnimation?: string) {
+        this.petAnimations = Assets.get(this.petName).animations;
+
+        const animName = initialAnimation ? initialAnimation : 'idle';
+        const pet = new AnimatedSprite(this.petAnimations[animName]);
+        pet.label = "pet";
+        pet.anchor.set(0.5);
+        pet.animationSpeed = 1 / 8;
+        pet.play();
+
+        // resize pet
+        resizeSpriteByWidth(pet, 128);
 
         // set the initial position of the whole container to the bottom-right
-        container.x = this.app.screen.width - sprite.width;
-        container.y = this.app.screen.height - sprite.height;
+        container.x = this.app.screen.width - pet.width;
+        container.y = this.app.screen.height - pet.height;
 
         // setup interaction events
-        sprite.interactive = true;
-        sprite.on('mousedown', (e) => {
+        pet.interactive = true;
+        pet.on('mousedown', (e) => {
             this.dragStatus = DragStatus.Entered;
             this.dragOffset.x = e.global.x - container.x;
             this.dragOffset.y = e.global.y - container.y;
         });
-        sprite.on('mouseup', () => {
+        pet.on('mouseup', () => {
             // the pet was not dragged nor currently "working", trigger `click` action instead
             if (this.dragStatus !== DragStatus.Dragging && !this.isRunningClippy) {
                 this.isRunningClippy = true;
+                // TODO: instead of looping `working` animation right away, play multi-part animation instead,
+                // such as `work-start`, `working`, `work-end` for smooth transition,
+                // But right now just stick with this because I don't have time to draw all of those.
                 this.playAnimation('working');
                 invokeCommand('execute_clippy').then(() => this.isRunningClippy = false);
             }
             this.dragStatus = DragStatus.Exited;
         });
-        sprite.on('mousemove', (e) => {
+        pet.on('mousemove', (e) => {
             if (this.dragStatus === DragStatus.Exited) return;
             // update pet position.
             // subtract the cursor point offset, otherwise the pet will suddenly get teleported
@@ -159,7 +178,7 @@ export class Pet {
             this.dragStatus = DragStatus.Dragging;
         });
 
-        container.addChild(sprite);
+        container.addChild(pet);
     }
 
     setupDialogBubble(container: Container) {
@@ -175,6 +194,9 @@ export class Pet {
         // set the animation speed to 5 fps
         bubble.animationSpeed = 1 / 5;
         bubble.loop = false;
+
+        resizeSpriteByWidth(bubble, 200);
+
         dialogContainer.addChild(bubble);
 
         // add text element to show messages
@@ -185,7 +207,7 @@ export class Pet {
                 wordWrapWidth: bubble.width * 0.7,
                 fill: 'black',
                 fontFamily: 'Arial',
-                fontSize: 45,
+                fontSize: 18,
                 align: 'center',
                 padding: 5,
             },

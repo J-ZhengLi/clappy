@@ -5,7 +5,7 @@ import { PetAction } from "./core/types";
 // disable context menu on right click
 document.addEventListener('contextmenu', event => event.preventDefault());
 
-const pet = new Pet();
+const pet = new Pet('ferris');
 
 listen('pet-action', (res) => {
     const payload = res.payload as PetAction;

@@ -12,3 +12,9 @@ export async function invokeCommand(command: string, args = {}) {
         throw error;
     }
 }
+
+export function resizeSpriteByWidth(sprite: any, targetWidth: number) {
+    const scale = targetWidth / sprite.width;
+    sprite.width = targetWidth;
+    sprite.height *= scale;
+}

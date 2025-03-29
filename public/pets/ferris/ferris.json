@@ -1,0 +1,67 @@
+{"frames": {
+
+"idle-0.png":
+{
+	"frame": {"x":23,"y":37,"w":34,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":34,"h":19},
+	"sourceSize": {"w":34,"h":23}
+},
+"idle-1.png":
+{
+	"frame": {"x":1,"y":1,"w":34,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":34,"h":20},
+	"sourceSize": {"w":34,"h":23}
+},
+"idle-2.png":
+{
+	"frame": {"x":37,"y":1,"w":34,"h":20},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":34,"h":20},
+	"sourceSize": {"w":34,"h":23}
+},
+"idle-3.png":
+{
+	"frame": {"x":1,"y":23,"w":34,"h":20},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":34,"h":20},
+	"sourceSize": {"w":34,"h":23}
+},
+"idle-4.png":
+{
+	"frame": {"x":37,"y":1,"w":34,"h":20},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":34,"h":20},
+	"sourceSize": {"w":34,"h":23}
+},
+"idle-5.png":
+{
+	"frame": {"x":1,"y":1,"w":34,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":34,"h":20},
+	"sourceSize": {"w":34,"h":23}
+}},
+"animations": {
+	"idle": ["idle-0.png","idle-1.png","idle-2.png","idle-3.png","idle-4.png","idle-5.png"],
+	"clap": ["idle-0.png","idle-1.png","idle-2.png","idle-3.png","idle-4.png","idle-5.png"],
+	"disappointed": ["idle-0.png","idle-1.png","idle-2.png","idle-3.png","idle-4.png","idle-5.png"],
+	"angry": ["idle-0.png","idle-1.png","idle-2.png","idle-3.png","idle-4.png","idle-5.png"],
+	"working": ["idle-0.png","idle-1.png","idle-2.png","idle-3.png","idle-4.png","idle-5.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "ferris.png",
+	"format": "RGBA8888",
+	"size": {"w":58,"h":58},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:60345fcaba13fabf9d63c6976e2c7a1b:b7bc352d326137978d869856aa5f5f45:ed5646cbb35e54dd2cb98abb440ec04f$"
+}
+}
